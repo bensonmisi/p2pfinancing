@@ -25,7 +25,7 @@
                                 <v-spacer></v-spacer>
                                 <div class="white--text text-right">
                                     <div><small>Wallet Balance: USD {{balance}}</small></div>
-                                    <div v-if="amount"><small>Withdrawable USD {{balance - calculateCharge}}</small></div>
+                                    <div ><small>Withdrawable USD {{calculateWithdrawal}}</small></div>
                                 </div>
                             </v-app-bar>
                             <v-card-text>
@@ -181,7 +181,7 @@ export default {
             loading:false,
             amountRules:[
                 v=> !!v || 'Amount required',
-                v => (v && v <= this.balance) || 'Amount must be less than or equal to '+this.balance
+                v => (v && v <= this.calculateWithdrawal) || 'Amount must be less than or equal to '+this.calculateWithdrawal
             ],
             nameRules:[v => !!v || 'Name is required'],
             surnameRules:[v => !!v || 'Name is required'],
@@ -213,6 +213,8 @@ export default {
         calculateBalance(){
             var amnt = Math.round(this.amount) + this.calculateCharge;
             return Math.round(this.balance)-amnt
+        },calculateWithdrawal(){
+            return Math.round(this.balance - (this.balance*(this.charge.percentage/100)))
         }
     }
 }

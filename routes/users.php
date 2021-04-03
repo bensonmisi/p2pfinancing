@@ -5,12 +5,15 @@ use App\Http\Controllers\profileController;
 use App\Http\Controllers\loanController;
 use App\Http\Controllers\collateralImagesController;
 use App\Http\Controllers\collateralController;
-Route::group(['middleware'=>['auth']],function(){
+use App\Http\Controllers\subscriptionController;
+
+Route::group(['middleware'=>['auth','checkSubscription']],function(){
     Route::group(['prefix'=>'dashboard'],function(){
 
        Route::get('/',[dashboardController::class,'index'])->name('dashboard');
+      
         Route::get('/profile',[profileController::class,'index'])->name('profile.index');
-        Route::post('/profile',[profileController::class,'update'])->name('profile.update');
+        Route::post('/profile',[profileController::class,'update'])->name('profile.update');      
         Route::resource('/loanApplication',loanController::class);
         Route::resource('/collateralApplication',collateralController::class);
         Route::resource('/collateralImages',collateralImagesController::class);

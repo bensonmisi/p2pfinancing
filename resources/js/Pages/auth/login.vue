@@ -1,6 +1,6 @@
 <template>
    <Layout title="Login">
-
+        
        <v-layout>
            <v-flex sm6 md6 xs12 offset-sm3 class="mt-10">
                <v-alert
@@ -18,7 +18,7 @@
                    type="error"
                >
                    {{errorMessage}}
-               </v-alert>
+               </v-alert> 
 
                    <v-alert
                        dense
@@ -30,9 +30,9 @@
                    </v-alert>
                    <v-card>
               <v-layout wrap>
-                  <v-flex sm6 xs12 class="green lighten-2 text-center pa-10">
+                  <v-flex  class="text-center pa-10">
                         <v-form ref="login" v-model="valid" lazy-validation>
-                      <div class="display-1 white--text"> LOGIN </div>
+                      <div class="display-1"> LOGIN </div>
                         <v-text-field
                          outlined
                          label="Email"
@@ -57,6 +57,7 @@
                         <v-btn
                             rounded
                             depressed
+                            class="primary"
                             block
                             :loading="loading"
                             :disabled="loading"
@@ -68,7 +69,7 @@
                         <p><inertia-link href="/forgot-password">Forgot your password ?</inertia-link></p>
                         </v-form>
                   </v-flex>
-                   <v-flex sm6 xs12></v-flex>
+                   
               </v-layout>
 
                </v-card>

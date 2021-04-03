@@ -7,7 +7,7 @@ namespace App\Helper;
 use App\Http\Requests\loanRequest;
 use App\Models\loans;
 use App\Models\User;
-
+use Paynow\Payments\Paynow;
 class generalHelper
 {
    public function check_loan(loanRequest $request){
@@ -22,5 +22,14 @@ class generalHelper
 
    public  function  getUser($id){
        return User::whereid($id)->first();
+   }
+
+   public function paynowMobile(){
+     $paynow = new Paynow('11865','b26c3132-13c8-4892-a717-56d750c87f1d',getenv('APP_URL').'/subscription',getenv('APP_URL').'/subscription');
+    return $paynow;
+    }
+
+   public function paynowOnline(){
+
    }
 }

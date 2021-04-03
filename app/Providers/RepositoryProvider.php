@@ -23,6 +23,7 @@ use App\Interfaces\profileInterface;
 use App\Interfaces\repayment_period_interface;
 use App\Interfaces\rolesInterface;
 use App\Interfaces\statementInterface;
+use App\Interfaces\subscriptionInterface;
 use App\Interfaces\usersInterface;
 use App\Interfaces\withdrawalInterface;
 use App\Repository\accountCreationRepository;
@@ -46,6 +47,7 @@ use App\Repository\profileRepository;
 use App\Repository\repayment_period_Repository;
 use App\Repository\rolesRepository;
 use App\Repository\statementRepository;
+use App\Repository\subscriptionRepository;
 use App\Repository\usersRepository;
 use App\Repository\withdrawalRepository;
 use Illuminate\Support\ServiceProvider;
@@ -83,6 +85,7 @@ class RepositoryProvider extends ServiceProvider
          $this->app->bind(withdrawalInterface::class,withdrawalRepository::class);
          $this->app->bind(installmentsInterface::class,installmentsRepository::class);
          $this->app->bind(reportsInterface::class,reportsRepository::class);
+         $this->app->bind(subscriptionInterface::class,subscriptionRepository::class);
     }
 
     /**

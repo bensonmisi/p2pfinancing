@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function deposits(){
         return $this->hasMany(deposit::class,'user_id','id');
     }
+
+    public function subscription(){
+        return $this->hasOne(subscription_user::class,'user_id','id');
+    }
 }
